@@ -29,12 +29,13 @@
                             <p class="card-text" style="color: green"><u><strong>Publié le</strong></u> : {{$bien->DatePubli}} </p>
                           
                             <p class="card-text">{{ substr($bien->description, 0,100) }}</p>
+                            @if($bien->statut)
+                            <span class="badge bg-success">Occupé</span>
+                        @endif <br/><br/>
                           
                         <a href="  #" class="btn btn-info">Voir plus</a> <br> 
                         {{-- {{ route('details', $bien->id) }}  --}}
-                        @if($bien->statut)
-                        <span class="badge bg-success">Occupé</span>
-                    @endif            
+                                
                             <hr>
                             <a href="modifier_bien/{{$bien->id}}" class="btn btn-warning">Modifier</a>
                             <a href="supprimer_bien/{{$bien->id}}" class="btn btn-danger">Supprimer</a>

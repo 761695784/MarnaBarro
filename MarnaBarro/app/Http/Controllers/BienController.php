@@ -45,7 +45,11 @@ class BienController extends Controller
 
 
 
-
+      public function supprimer_bien($id){
+        $biens = Bien::find($id);
+        $biens->delete();
+        return redirect('/liste')->with('status', 'Bien supprimé avec succès.');     
+      }
 
 
 
