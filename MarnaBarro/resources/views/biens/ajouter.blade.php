@@ -37,18 +37,17 @@
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <form>
-            
-            
-             
+
+            <form action="/sauvegarde"  method="POST" >  
+              @csrf           
                 <div class="mb-3 d-flex flex-column">
                     <label for="image" class="form-label">URL image</label>
-                    <input type="text" class="form-control" id="image">
+                    <input type="text" class="form-control" name="image" id="image">
                   </div> 
               <div class="d-flex justify-content-between ">
                 <div class="mb-3 d-flex flex-column col-7">
-                    <label for="nom" class="form-label">le nom</label>
-                    <input type="text" class="form-control" id="nom">
+                    <label for="nom" class="form-label">le type de bien</label>
+                    <input type="text" class="form-control" id="nom" name="nom">
                   </div>
                   <div class="mb-3 col-4 ">
                     <label for="categorie" class="form-label">Sélectionnez une catégorie</label>
@@ -62,7 +61,7 @@
 
               <div class="mb-3 d-flex flex-column ">
                 <label for="addresse" class="form-label"> l'addresse </label>
-                <input type="text" class="form-control" id="addresse" >
+                <input type="text" class="form-control" name="addresse" id="addresse" >
               </div>
    
               <!-- Bouton radio -->
@@ -76,13 +75,13 @@
             
               <div class="mb-3">
                 <label for="date_publier" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date_publier">
+                <input type="date" name="date_publier" class="form-control" id="date_publier">
               </div>
                        
              
               <div class="mb-3">
                 <label for="description" class="form-label">description</label>
-                <textarea class="form-control" id="description" rows="3" placeholder="description"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="description"></textarea>
               </div>
               <!-- Bouton d'envoi -->
               <button type="submit" class="btn btn-dark text-warning">Envoyer</button>
@@ -90,17 +89,14 @@
           </div>
         </div>
       </div>
-
-
-      <!--
-        $table->string('nom'); //
-            $table->text('description');
-            $table->string('status')->nullable();
-            $table->string('categorie'); // categorie du bien (ex: immobilier, vehicule, etc.)
-            $table->string('addresse');
-            $table->string('image');
-            $table->date('date_publier');
- -->
+<!--
+            ('nom'); //
+            description');
+            ('status')-
+            ('categorie'); 
+            ('addresse');
+            ('image');
+          ('date_publier'); -->
 
 
 

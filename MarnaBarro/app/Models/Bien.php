@@ -9,6 +9,15 @@ class Bien extends Model
 {
     use HasFactory;
 
-
+  protected $fillable =
+  [
+             'nom',
+            'description',
+            'status',
+            'categorie', 
+            'addresse',
+            'image',
+          'date_publier',
+  ];
  
 }
