@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BienController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BienController;
 use App\Http\Controllers\CommentController;
@@ -24,3 +25,9 @@ Route::get('/comments{comment}/edit', [CommentController::class, 'edit'])->name(
 Route::post('update/comment/{comment}', [CommentController::class, 'update'])->name('comments.update');
 
 Route::get('/comments{comment}/destroy', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('bien',[BienController::class,'afficher_biens']);
+
+Route::get('/ajouter',[BienController::class,'ajouter_biens']);
+
+Route::post('sauvegarde',[BienController::class,'sauvegarder']);
+
