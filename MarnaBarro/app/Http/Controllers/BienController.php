@@ -54,7 +54,11 @@ class BienController extends Controller
 
 
 
-
+      public function details($id)
+      {
+          $biens = Bien::findOrFail($id);
+          return view('biens.details', compact('biens'));
+      }
 
 
 
