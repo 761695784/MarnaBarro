@@ -7,6 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bien extends Model
 {
+
+    protected $fillable = [
+        'image',
+        'nom',
+        'categorie',
+        'adresse',
+    ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+
+    
+
     use HasFactory;
 
   protected $fillable =
@@ -20,4 +36,5 @@ class Bien extends Model
           'date_publier',
   ];
  
+
 }
