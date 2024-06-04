@@ -33,8 +33,8 @@
                             <span class="badge bg-success">Occupé</span>
                         @endif <br/><br/>
                           
-                        <a href="  #" class="btn btn-info">Voir plus</a> <br> 
-                        {{-- {{ route('details', $bien->id) }}  --}}
+                        <a href="{{ route('details', $bien->id) }}" class="btn btn-info">Voir plus</a> <br> 
+                       
                                 
                             <hr>
                             <a href="modifier_bien/{{$bien->id}}" class="btn btn-warning">Modifier</a>
