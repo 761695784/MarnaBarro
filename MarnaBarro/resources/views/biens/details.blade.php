@@ -31,12 +31,12 @@
             <div class="card mb-2">
                 <div class="card-body">
                     <input type="hidden" name="id" value="{{ $comment->id }}"> 
-                    <p><strong>{{ $comment->nom_complet_auteur }}</strong></p>         
+                    <p><strong>{{ $comment->auteur }}</strong></p>         
                     <p>{{ $comment->contenu }}</p>
                     <p class="badge text-bg-warning"><strong>Publié le :</strong> {{ $comment->DatePublication }}</p>
                     <br>
-                    <a href="#" class="btn btn-primary">Modifier</a>   
-                    {{-- {{ route('comments.edit', $comment->id) }}              --}}
+                    <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Modifier</a>   
+                 
                     <a href="#" class="btn btn-danger">Supprimer</a>   
                     {{-- {{ route('comments.destroy', $comment->id) }}         --}}
                 </div>

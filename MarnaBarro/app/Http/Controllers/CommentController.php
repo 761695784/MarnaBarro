@@ -38,9 +38,29 @@ class CommentController extends Controller
 
 
 
+        public function edit(Comment $comment) {
+            return view('comments.edit', compact('comment'));
+
+        }
 
 
-
+        public function update(Request $request, $id)
+        {
+            $request->validate([
+                'auteur' => 'required',
+                'contenu' => 'required',
+            ]);
+    
+            $comment = Comment::findOrFail($id);
+            $comment->update([
+                'auteur' => $request->auteur,
+                'contenu' => $request->contenu,
+            ]);
+    
+          
+            return redirect()->back()
+            ->with('status', 'Commentaire modifié avec succès.');
+        }
 
 
 

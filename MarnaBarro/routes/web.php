@@ -18,3 +18,7 @@ Route::get('/supprimer_bien/{id}', [BienController::class, 'supprimer_bien']);
 Route::get('/details/{id}', [BienController::class, 'details'])->name('details');
 
 Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
+
+Route::get('/comments{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+
+Route::post('update/comment/{comment}', [CommentController::class, 'update'])->name('comments.update');
