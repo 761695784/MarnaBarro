@@ -20,7 +20,4 @@ class Comment extends Model
         return $this->belongsTo(Bien::class);
     }
 
-
-
-
 }

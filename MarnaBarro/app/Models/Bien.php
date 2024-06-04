@@ -8,33 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Bien extends Model
 {
 
-    protected $fillable = [
-        'image',
-        'nom',
-        'categorie',
-        'adresse',
-    ];
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-
-    
-
     use HasFactory;
 
   protected $fillable =
   [
              'nom',
             'description',
-            'status',
+            'statut',
             'categorie', 
-            'addresse',
+            'adresse',
             'image',
-          'date_publier',
+          'DatePubli',
   ];
  
+
+  public function comments()
+  {
+      return $this->hasMany(Comment::class);
+  }
+
 
 }

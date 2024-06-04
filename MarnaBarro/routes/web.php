@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\BienController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BienController;
 use App\Http\Controllers\CommentController;
+
 
 Route::get('/', function () {
     return view('welcome');
