@@ -25,6 +25,22 @@
 @endif<br>
     <p>{{ $biens->description}}</p>
     <p  class="badge text-bg-dark"  ><strong>Publié le :</strong> {{ $biens->DatePubli }}</p>
+
+    <form method="POST" action="">
+        {{-- {{ route('comments.store') }} --}}
+        @csrf
+        <input type="hidden" name="bien_id" value="{{ $biens->id }}">
+        <div class="mb-3">
+            <label for="Auteur" class="form-label">Auteur</label>
+            <input type="text" class="form-control" name="auteur" placeholder="Entrer votre nom" required>
+        </div>
+        <div class="mb-3">
+            <label for="commentaire" class="form-label">Commentaire</label>
+            <textarea class="form-control" name="contenu" rows="3" placeholder="Entrer votre commentaire" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <a href="/liste" class="btn btn-danger">Annuler</a>
+    </form>
    
     
 </div>
