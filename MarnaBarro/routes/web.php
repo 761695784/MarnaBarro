@@ -22,3 +22,5 @@ Route::post('/comments/store', [CommentController::class, 'store'])->name('comme
 Route::get('/comments{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
 
 Route::post('update/comment/{comment}', [CommentController::class, 'update'])->name('comments.update');
+
+Route::get('/comments{comment}/destroy', [CommentController::class, 'destroy'])->name('comments.destroy');

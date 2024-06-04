@@ -37,8 +37,8 @@
                     <br>
                     <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Modifier</a>   
                  
-                    <a href="#" class="btn btn-danger">Supprimer</a>   
-                    {{-- {{ route('comments.destroy', $comment->id) }}         --}}
+                    <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-danger">Supprimer</a>   
+                       
                 </div>
             </div>
         @endforeach

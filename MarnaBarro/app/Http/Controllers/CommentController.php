@@ -65,5 +65,14 @@ class CommentController extends Controller
 
 
 
+        public function destroy(Comment $comment) {
+            $comment->delete();
+            return redirect()->route('details', ['id' => $comment->bien_id])
+                             ->with('status', 'Commentaire supprimé avec succès.');
+        }
+
+
+
+
 
 }
