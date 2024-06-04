@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,8 +66,10 @@
    
               <!-- Bouton radio -->
               <div class="mb-3">
-                  <input class="form-check-input" type="radio" name=" status" id=" status" value="status" checked>
-                  <label class="form-check-label" for=" status" > status</label>
+                  <input class="form-check-input" type="radio" name=" status" id=" status" value="Occupé">
+                  <label class="form-check-label" for=" status" > Occupé</label>
+                  <input class="form-check-input" type="radio" name=" status" id=" status" value="vide">
+                  <label class="form-check-label" for=" status1" > vide</label>
               </div>            
             
               

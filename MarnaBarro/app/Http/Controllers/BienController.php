@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class BienController extends Controller
 {
       public function afficher_biens (){
-      return view('biens/index');
+         $biens = Bien::all();
+         return view('biens/index',compact('biens'));
+     // return view('biens/index');
    }
 
    public function ajouter_biens(){
