@@ -78,4 +78,6 @@ class BienController extends Controller
          return redirect('/bien') ;
 
        }
+
+      
 }

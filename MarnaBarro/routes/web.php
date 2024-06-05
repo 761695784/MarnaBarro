@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BienController;
 use App\Http\Controllers\CommentController;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/liste', [ BienController:: class,'liste' ]);
+Route::get('/', [ BienController:: class,'liste' ]);
 
 Route::get('/modifier_bien/{id}', [BienController::class, 'modifier_bien']);
 
@@ -30,4 +31,16 @@ Route::get('bien',[BienController::class,'afficher_biens']);
 Route::get('/ajouter',[BienController::class,'ajouter_biens']);
 
 Route::post('sauvegarde',[BienController::class,'sauvegarder']);
+
+// La route pour l'authentification  
+Route::get('/register',[AuthController::class,'register'])->name('register');
+
+Route::post('/register',[AuthController::class,'registerPost'])->name('register');
+
+Route::get('/login',[AuthController::class,'login'])->name('login');
+
+
+Route::post('/login',[AuthController::class,'loginpost'])->name('login');
+
+Route::delete('/logout',[AuthController::class,'logout'])->name('logout');
 

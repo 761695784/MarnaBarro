@@ -27,10 +27,16 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
+         <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-warning" type="submit" > Déconnexion</button>
+
+         </form>
         </div>
       </div>
     </nav>
-  <h1 style="text-align: center" class="m-2"> Bienvenu sur ImmoBien</h1>
+  <h1 style="text-align: center" class="m-2"> Bienvenu sur ImmoBien {{Auth::user()->name}}</h1>
 
 
 
