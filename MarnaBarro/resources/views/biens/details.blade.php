@@ -35,10 +35,12 @@
                     <p>{{ $comment->contenu }}</p>
                     <p class="badge text-bg-warning"><strong>Publié le :</strong> {{ $comment->DatePublication }}</p>
                     <br>
+                    @if(Auth::check())
                     <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Modifier</a>   
                  
                     <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-danger">Supprimer</a>   
                        
+                        @endif
                 </div>
             </div>
         @endforeach

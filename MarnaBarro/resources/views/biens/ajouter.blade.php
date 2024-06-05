@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <!-- Titre du site -->
-          <a class="navbar-brand align-items-center text-warning" href="#">ImmoBien</a>
+          <a class="navbar-brand align-items-center text-warning" href="/">ImmoBien</a>
           
           <!-- Bouton de basculement pour les appareils mobiles -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,14 +91,6 @@
           </div>
         </div>
       </div>
-<!--
-            ('nom'); //
-            description');
-            ('status')-
-            ('categorie'); 
-            ('addresse');
-            ('image');
-          ('date_publier'); -->
 
 
 
