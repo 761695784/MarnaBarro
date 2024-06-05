@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('biens', function (Blueprint $table) {
             $table->id();
-            $table->string('nom'); //
-            $table->text('description');
-            $table->string('status')->nullable();
-            $table->string('categorie'); // categorie du bien (ex: immobilier, vehicule, etc.)
-            $table->string('addresse');
             $table->string('image');
-            $table->date('date_publier');
+            $table->string('nom');
+            $table->string('categorie');       
+            $table->string('adresse');
+            $table->timestamp('DatePubli'); 
+            $table->boolean('statut');
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('commentaires', function (Blueprint $table) {
+        Schema::table('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('auteur');
+            $table->string('auteur');
             $table->text('contenu');
+            $table->timestamp('DatePublication');
             $table->foreignId('bien_id')->constrained();
             $table->timestamps();
         });
@@ -25,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('commentaires');
+        Schema::table('comments', function (Blueprint $table) {
+             Schema::dropIfExists('comments');
+        });
     }
 };

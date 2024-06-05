@@ -61,14 +61,14 @@
 
               <div class="mb-3 d-flex flex-column ">
                 <label for="addresse" class="form-label"> l'addresse </label>
-                <input type="text" class="form-control" name="addresse" id="addresse" >
+                <input type="text" class="form-control" name="adresse" id="adresse" >
               </div>
    
               <!-- Bouton radio -->
               <div class="mb-3">
-                  <input class="form-check-input" type="radio" name=" status" id=" status" value="Occupé">
+                  <input class="form-check-input" type="radio" name=" statut" id=" status" value="1">
                   <label class="form-check-label" for=" status" > Occupé</label>
-                  <input class="form-check-input" type="radio" name=" status" id=" status" value="vide">
+                  <input class="form-check-input" type="radio" name=" statut" id=" status" value="0">
                   <label class="form-check-label" for=" status1" > vide</label>
               </div>            
             
@@ -77,7 +77,7 @@
             
               <div class="mb-3">
                 <label for="date_publier" class="form-label">Date</label>
-                <input type="date" name="date_publier" class="form-control" id="date_publier">
+                <input type="date" name="DatePubli" class="form-control" >
               </div>
                        
              

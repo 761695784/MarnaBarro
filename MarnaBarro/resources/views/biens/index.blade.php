@@ -48,7 +48,7 @@
                   <p class="card-text">{{ substr($bien->description, 0,100) }}</p>
              <p> {{ $bien->status }}</p>
                 
-              <a href="" class="btn btn-info">Voir plus</a> <br> 
+              <a href="{{route('details',$bien->id)}}" class="btn btn-info">Voir plus</a> <br> 
              
                       
                   <hr>
