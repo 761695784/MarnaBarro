@@ -27,24 +27,32 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
-         <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-warning" type="submit" > Déconnexion</button>
+          @if(Auth::check())
+          <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-warning m-1" type="submit" > Déconnexion</button>
+      @endif
+      @if(Auth::guest())
+      <a class="btn btn-warning m-1" href="/login"> Se connecter</a>
+  @endif
+    
 
          </form>
         </div>
       </div>
     </nav>
-  <h1 style="text-align: center" class="m-2"> Bienvenu sur ImmoBien {{Auth::user()->name}}</h1>
+  <h1 style="text-align: center" class="m-2"> Bienvenu sur ImmoBien </h1>
 
 
 
 
 
     <div class="container text-center">
-           
-            <a href="/ajouter" class="btn btn-primary">Ajouter un bien</a><hr>
+       
+ @if(Auth::check())
+           <a href="/ajouter" class="btn btn-primary">Ajouter un bien</a><hr>
+       @endif
             @if (session('status'))
             <div class="alert alert-success">
                 {{session('status')}}
