@@ -75,7 +75,7 @@ class BienController extends Controller
        public function sauvegarder (Request $request){
          Bien::create($request->all());
          
-         return redirect('/bien') ;
+         return redirect('/') ;
 
        }
 
