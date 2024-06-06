@@ -7,42 +7,92 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif  
-
-    <div class="container mt-5">
-        <a href="/liste" class="btn btn-danger">Retour à la liste</a>
-        <h1>{{ $biens->nom }}</h1>
-        <img src="{{ asset($biens->image) }}" class="img-fluid" alt="Image">
-        <p><strong>Catégorie :</strong> {{ $biens->categorie }}</p>
-        <p><strong>Adresse :</strong> {{ $biens->adresse }}</p>
-        @if($biens->statut)
-            <span class="badge bg-success">Occupé</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <!-- Titre du site -->
+          <a class="navbar-brand" href="#">ImmoBien</a>
+          
+          <!-- Bouton de basculement pour les appareils mobiles -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <!-- Liens de navigation -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+            @if(Auth::check())
+            <form action="{{route('logout')}}" method="POST" class="d-flex" role="search">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-warning m-1" type="submit" > Déconnexion</button>
         @endif
-        <br>
-        <p>{{ $biens->description }}</p>
-        <p class="badge text-bg-dark"><strong>Publié le :</strong> {{ $biens->DatePubli }}</p>
+        @if(Auth::guest())
+        <a class="btn btn-warning m-1" href="/login"> Se connecter</a>
+    @endif
+      
+  
+           </form>
+          </div>
+        </div>
+      </nav>
 
-        <h2>Commentaires</h2>
-        @foreach($biens->comments as $comment) 
-            <div class="card mb-2">
-                <div class="card-body">
-                    <input type="hidden" name="id" value="{{ $comment->id }}"> 
-                    <p><strong>{{ $comment->auteur }}</strong></p>         
-                    <p>{{ $comment->contenu }}</p>
-                    <p class="badge text-bg-warning"><strong>Publié le :</strong> {{ $comment->DatePublication }}</p>
-                    <br>
-                    <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Modifier</a>   
-                 
-                    <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-danger">Supprimer</a>   
-                       
-                </div>
+
+      
+   
+    <div class="d-flex justify-content-end">
+    
+        <a href="/liste" class="btn btn-warning m-2" style="">Retour à la liste</a>
+    </div>
+
+<!-- la font -->
+
+<div class="container mt-5">
+    <!-- Présentation du Bien -->
+
+    <div class="card mb-4">
+        <img src="{{ asset($biens->image) }}" class="card-img-top" alt="Image du Bien">
+        <div class="card-body">
+            
+            <h3 class="card-title">
+               {{ $biens->nom }}
+                <br>   @if  ($biens->statut)
+                <span class="badge bg-success">Occupé</span>
+            @endif</h3>
+            <ul class="list-group list-group-flush">
+            
+                <li class="list-group-item"><strong>catégorie:</strong>  {{ $biens->categorie }}</li>
+                <li class="list-group-item"><strong>Addresse:</strong> {{ $biens->adresse }}</li>
+                <li class="list-group-item"><strong>Date:</strong>{{ $biens->DatePubli }}</li>
+             
+            </ul>
+            <div class="mt-4">
+                <h4>Description</h4>
+                <p>{{ $biens->description }}</p>
             </div>
-        @endforeach
+        </div>
+    </div>
+  <!-- fin de la présentation -->
 
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif  
+    <!-- Formulaire et Réponses côte à côte -->
+    <div class="row">
+        <!-- Formulaire de contact -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Contactez-nous</h4>
+                  <hr>
         <form method="POST" action="{{ route('comments.store') }}">
             @csrf
             <input type="hidden" name="bien_id" value="{{ $biens->id }}">
@@ -58,10 +108,43 @@
                 <label for="publication" class="form-label">Date de Publication</label>
                 <input type="date" class="form-control" name="DatePublication" required>
             </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-            <a href="/liste" class="btn btn-danger">Annuler</a>
+            <button type="submit" class="btn btn-dark">Envoyer</button>
+            <a href="/liste" class="btn btn-warning">Annuler</a>
         </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Réponses -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4> Commentaires</h4>
+                    <hr>
+                    @foreach($biens->comments as $comment) 
+                 <div>
+                    <input type="hidden" name="id" value="{{ $comment->id }}"> 
+                    <h5 class="card-title">Auteur: {{ $comment->auteur }}</h5>
+                    <p class="card-text">{{ $comment->contenu }}</p>
+                    <p class=""><strong>Publié le :</strong> {{ $comment->DatePublication }}</p> <br>
+                    @if(Auth::check())
+                    <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-dark">Modifier</a>   
+                 
+                    <a href="{{ route('comments.destroy', $comment->id) }}" class="btn btn-warning">Supprimer</a>   
+                       <hr>
+                        @endif
+                 </div>
+                 @endforeach
+            </div>
+        </div>
     </div>
+</div>
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
