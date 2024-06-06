@@ -41,7 +41,8 @@
           <input type="password" name="password" class="form-control" id="password" required>
         </div>
      
-        <button type="submit" class="btn btn-dark ">Envoyer</button>
+        <button type="submit" class="btn btn-dark ">Connexion</button>
+        <a href="/register" class="btn btn-warning">S'inscrire</a>
       </form>
 
 

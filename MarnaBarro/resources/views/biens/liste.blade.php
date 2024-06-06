@@ -76,7 +76,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       <div class="col-md-5">
         <div class="">   
           <h5 class="card-title" style="color: rgb(233, 168, 28)">{{$bien->nom}}</h5>
-           <p class=""> {{ substr($bien->description, 0,100) }}</p>
+           <p class=""> {{ substr($bien->description, 0,190) }}</p>
           </div>
       </div>
     </div>

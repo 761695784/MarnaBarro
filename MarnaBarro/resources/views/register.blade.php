@@ -46,6 +46,7 @@
         </div>
      
         <button type="submit" class="btn btn-dark ">Envoyer</button>
+        <a href="/login" class="btn btn-warning">Se connecter</a>
       </form>
 
 
