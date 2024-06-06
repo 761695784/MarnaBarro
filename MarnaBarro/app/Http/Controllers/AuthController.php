@@ -56,7 +56,7 @@ class AuthController extends Controller
     }
     
     public function loginPost(Request $request){
-      
+
         $credetails =[
         'email'=> $request->email,
         'password'=> $request->password,
