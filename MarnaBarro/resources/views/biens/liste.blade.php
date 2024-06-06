@@ -13,7 +13,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <!-- Titre du site -->
-        <a class="navbar-brand" href="#">ImmoBien</a>
+        <a class="navbar-brand" href="/">ImmoBien</a>
         
         <!-- Bouton de basculement pour les appareils mobiles -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       </div>
     </div>
   
-  <div class="d-flex justify-content-between " style="padding: 0.5rem 1rem ;">  
+  <div class=" " style="padding: 0.5rem 1rem ;">  
      <h6 class="card-title"   style="color: rgb(233, 168, 28)"><u><strong style="color:black;">Catégorie</strong></u> : {{$bien->categorie}}</h6>
     <h6 class="card-text" style="color:  rgb(233, 168, 28)"><u><strong style="color:black;">Adresse</strong></u> : {{$bien->adresse}} </h6>
    
@@ -91,7 +91,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       <a href="{{ route('details', $bien->id) }}" class="btn btn-dark m-2" ><i class="fa-solid fa-info" style="color: #FFD43B;"></i></a> 
       <div>
         @if(Auth::check())
-        <a href="modifier_bien/{{$bien->id}}" class="btn btn-dark m-2" ><i class="fa-solid fa-pen" style="color: #FFD43B;"></i></a>
+        <a href="modifier_bien/{{$bien->id}}" class="btn btn-dark m-2" >
+          <i class="fa-solid fa-pen" style="color: #FFD43B;"></i></a>
         <a href="supprimer_bien/{{$bien->id}}" class="btn btn-dark m-2"  ><i class="fa-solid fa-trash" style="color: #c9200d;"></i></a>
       @endif
       </div>

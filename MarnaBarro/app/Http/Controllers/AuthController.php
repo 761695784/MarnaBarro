@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -13,7 +14,36 @@ class AuthController extends Controller
         return view('register');
     }
     public function registerPost (Request $request){
-       $user = new User ();
+      
+        $rules = [
+            'name' => 'required|max:255|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:4', // Ajout de 'confirmed' pour la confirmation du mot de passe
+        ];
+
+        // Définir les messages personnalisés
+        $messages = [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+            'email.required' => 'L\'adresse e-mail est obligatoire.',
+            'email.email' => 'L\'adresse e-mail doit être valide.',
+            'email.unique' => 'L\'adresse e-mail est déjà utilisée.',
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.min' => 'Le mot de passe doit contenir au moins 4 caractères.',
+            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+        ];
+
+        // Valider les données
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Si la validation échoue, rediriger avec les erreurs
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+
+      
+        $user = new User ();
        $user->name = $request->name;
        $user->email = $request->email;
        $user->password = Hash::make($request->password);
@@ -24,8 +54,31 @@ class AuthController extends Controller
     public function login(){
         return view('login');
     }
+    
     public function loginPost(Request $request){
-        
+        $rules = [
+      
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:4', // Ajout de 'confirmed' pour la confirmation du mot de passe
+        ];
+
+        // Définir les messages personnalisés
+        $messages = [
+            'email.required' => 'L\'adresse e-mail est obligatoire.',
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.min' => 'Le mot de passe doit contenir au moins 4 caractères.',
+        ];
+
+        // Valider les données
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Si la validation échoue, rediriger avec les erreurs
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+
+
         $credetails =[
         'email'=> $request->email,
         'password'=> $request->password,
