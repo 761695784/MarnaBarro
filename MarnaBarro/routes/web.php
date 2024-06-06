@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Logout;
 
 
 Route::get('/liste', [ BienController:: class,'liste' ]);
+
 Route::get('/', [ BienController:: class,'liste' ]);
 
 Route::get('/modifier_bien/{id}', [BienController::class, 'modifier_bien']);
@@ -28,19 +29,18 @@ Route::post('update/comment/{comment}', [CommentController::class, 'update'])->n
 Route::get('/comments{comment}/destroy', [CommentController::class, 'destroy'])->name('comments.destroy');
 Route::get('bien',[BienController::class,'afficher_biens']);
 
-Route::get('/ajouter',[BienController::class,'ajouter_biens']);
+Route::get('/ajouter',[BienController::class,'ajouter_biens'])->middleware('Auth');
 
-Route::post('sauvegarde',[BienController::class,'sauvegarder']);
+Route::post('sauvegarde',[BienController::class,'sauvegarder'])->middleware('Auth');
 
 // La route pour l'authentification  
 Route::get('/register',[AuthController::class,'register'])->name('register');
 
-Route::post('/register',[AuthController::class,'registerPost'])->name('register');
-
+Route::post('/register',[AuthController::class,'registerPost'])->name('register')
+;
 Route::get('/login',[AuthController::class,'login'])->name('login');
 
 
 Route::post('/login',[AuthController::class,'loginpost'])->name('login');
-
 Route::delete('/logout',[AuthController::class,'logout'])->name('logout');
 

@@ -56,27 +56,8 @@ class AuthController extends Controller
     }
     
     public function loginPost(Request $request){
-        $rules = [
       
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:4', // Ajout de 'confirmed' pour la confirmation du mot de passe
-        ];
-
-        // Définir les messages personnalisés
-        $messages = [
-            'email.required' => 'L\'adresse e-mail est obligatoire.',
-            'password.required' => 'Le mot de passe est obligatoire.',
-            'password.min' => 'Le mot de passe doit contenir au moins 4 caractères.',
-        ];
-
-        // Valider les données
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        // Si la validation échoue, rediriger avec les erreurs
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
+      
 
 
         $credetails =[
