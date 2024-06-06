@@ -65,16 +65,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
  
 <!--partie essai -->
 
-<div class="container d-flex flex-wrap gap-5" >
+<div class="container d-flex flex-wrap gap-5 " >
   @foreach($biens as $bien)
 
-  <div class="card mb-3 m-2" style="width: 38rem; background-color:  " >
+  <div class="card mb-3 m-2 p-2" style="width: 38rem; background-color:  " >
     <div class="d-flex ">
       <div class="col-md-7" style="">
         <img src="{{asset ($bien->image)}}" style=" width:18rem; heigth:15rem;" alt="...">
       </div>
       <div class="col-md-5">
-        <div class="m-1">   
+        <div class="">   
           <h5 class="card-title" style="color: rgb(233, 168, 28)">{{$bien->nom}}</h5>
            <p class=""> {{ substr($bien->description, 0,100) }}</p>
           </div>
